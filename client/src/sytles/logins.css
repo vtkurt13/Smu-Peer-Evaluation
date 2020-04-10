@@ -1,0 +1,68 @@
+.loginform {
+    text-align: center;
+    background-color: rgb(25, 56, 114);
+}
+
+.image {
+    text-align: center;
+}
+
+.username {
+    background-color: rgb(25, 56, 114) ;
+    border-top-style: hidden;
+    border-right-style: hidden;
+    border-left-style: hidden;
+    border-bottom-color: gray;
+    color: white;
+    height:50px;
+    width: 40%;
+    font-size: 14pt;
+}
+
+.password {
+    background-color: rgb(25, 56, 114) ;
+    border-top-style: hidden;
+    border-right-style: hidden;
+    border-left-style: hidden;
+    border-bottom-color: gray;
+    color: white;
+    height:50px;
+    width: 40%;
+    font-size: 14pt;
+}
+
+input[type='text']{
+    text-align:center
+}
+input[type='password']{
+    text-align:center
+}
+
+.stud-login {
+    width: 200px;
+    height: 40px;
+    margin-top: 25px;
+    text-align: center;
+    font-size: 15pt;
+    border-top-style: hidden;
+    border-right-style: hidden;
+    border-left-style: hidden;
+    border-bottom-style: hidden;
+    color:white;
+    border-radius: 8px;
+    background-color: rgb(126, 108, 75);
+}
+
+.signup {
+    font-size:13pt;
+    color:white;
+    font-style: oblique;
+    text-decoration: underline;
+}
+.sign-up-quest {
+    font-size: 13pt;
+    color: white;
+    margin-left: -130px;
+    margin-right: 10px;
+
+}

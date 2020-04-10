@@ -1,0 +1,52 @@
+.createform {
+    text-align: center;
+    background-color: rgb(25, 56, 114);
+}
+
+.image {
+    text-align: center;
+}
+
+.create {
+    background-color: rgb(25, 56, 114) ;
+    border-top-style: hidden;
+    border-right-style: hidden;
+    border-left-style: hidden;
+    border-bottom-color: gray;
+    color: white;
+    height:50px;
+    width: 40%;
+    font-size: 14pt;
+}
+
+input[type='text']{
+    text-align:center
+}
+input[type='password']{
+    text-align:center
+}
+
+.headers {
+    color: white;
+}
+
+.radiolbl {
+    font-size: 16pt;
+    color: white;
+}
+
+.create-button {
+    margin: 20px;
+    width: 200px;
+    height: 50px;
+    text-align: center;
+    font-size: 15pt;
+    border-top-style: hidden;
+    border-right-style: hidden;
+    border-left-style: hidden;
+    border-bottom-style: hidden;
+    color:white;
+    border-radius: 12px;
+    background-color: rgb(126, 108, 75);
+
+}

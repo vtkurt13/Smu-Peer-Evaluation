@@ -1,0 +1,44 @@
+.homepage {
+    text-align: center;
+    background-color: rgb(192, 189, 189);
+}
+
+.image {
+    width: 500px;
+}
+
+.create-account {
+    margin-left: 370px;
+    font-size: 14pt;
+}
+
+.route {
+    width: 200px;
+    height: 70px;
+    margin-top: 25px;
+    margin-bottom: 50px;
+    margin-left: 40px;
+    text-align: center;
+    font-size: 15pt;
+    border-top-style: hidden;
+    border-right-style: hidden;
+    border-left-style: hidden;
+    border-bottom-style: hidden;
+    color:white;
+    border-radius: 8px;
+    background-color:  rgb(25, 56, 114);
+}
+
+.signup {
+    font-size:13pt;
+    color:white;
+    font-style: oblique;
+    text-decoration: underline;
+}
+.sign-up-quest {
+    font-size: 13pt;
+    color: white;
+    margin-left: -130px;
+    margin-right: 10px;
+
+}

@@ -1,0 +1,71 @@
+.profhome {
+    background-color: rgb(25, 56, 114);
+    text-align: center;
+    height: 100%;
+}
+
+
+.welcome{
+    color: white;
+    padding-left: 650px;
+    font-size: 14pt;
+}
+
+.head{
+    color: white;
+    font-size: 20pt;
+}
+
+.dropdown{
+    height: 30px;
+    width: 105px;
+    
+}
+
+.checks{
+    background-color: white;
+    width: 250px;
+    text-align: left;
+    margin-left: 1100px;
+    margin-top: -27px;
+}
+
+.lbl{
+    color:white;
+    font-weight: bold;
+    padding-left: 200px;
+}
+
+.lblfilter{
+    color:white;
+    font-weight: bold;
+    padding-right: 355px;
+    padding-left: 200px;
+}
+    
+.search{
+    background-color: rgb(175, 156, 71);
+    margin-left: 755px;
+    color: white;
+    font-weight: bold;
+    height: 25px;
+    width: 80px;
+    border-top-style: hidden;
+    border-right-style: hidden;
+    border-left-style: hidden;
+    border-bottom-style: hidden;
+}
+
+.profbtn{
+    background-color: rgb(175, 156, 71);
+    color: white;
+    font-weight: bold;
+    height: 45px;
+    border-top-style: hidden;
+    border-right-style: hidden;
+    border-left-style: hidden;
+    border-bottom-style: hidden;
+    border-radius: 8px;
+    margin-left: 30px;
+    margin-top: -10
+}

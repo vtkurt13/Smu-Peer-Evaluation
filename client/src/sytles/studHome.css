@@ -1,0 +1,45 @@
+.studhome {
+    background-color: rgb(25, 56, 114);
+    text-align: center;
+}
+
+.welcome{
+    color: white;
+    padding-left: 650px;
+    font-size: 14pt;
+}
+
+.head{
+    color: white;
+    font-size: 20pt;
+}
+
+.dropdown{
+    height: 30px;
+    width: 105px;
+    
+}
+
+.checks{
+    background-color: white;
+    width: 250px;
+    text-align: left;
+    margin-left: 1100px;
+    margin-top: -27px;
+}
+
+.lbl{
+    color:white;
+    font-weight: bold;
+    padding-left: 200px;
+}
+
+.lblfilter{
+    color:white;
+    font-weight: bold;
+    padding-right: 355px;
+    padding-left: 200px;
+}
+    
+
+

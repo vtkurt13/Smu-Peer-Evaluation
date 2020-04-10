@@ -14,32 +14,6 @@ export class CreateUser extends Component {
             password: ''},
         option: 'student'
     }
-
-    // componentDidMount() {
-    //     this.getStudents();
-    // }
-
-    // getStudents = _ => {
-    //     fetch('http://localhost:5000/students')
-    //     .then(response => response.json())
-    //     .then(response => this.setState({students: response.data}))
-    //     .catch(err => console.log(err))
-    // }
-
-    // addStudent = _ => {
-    //     const { student } = this.state;
-    //     fetch(`http://localhost:5000/createAccount?student_id=${student.id}&student_firstname=${student.firstName}&student_lastname=${student.lastName}&student_username=${student.username}&student_password=${student.password}`)
-
-    // }
-
-    // handleOptionChange = e => {
-    //     this.setState({
-    //         option: e.target.value
-    //     })
-    // }
-
-    // renderStudent= ({student_id, student_firstname, student_lastname, student_username, student_password }) =>
-    //         <div key={student_id}>{student_firstname, student_lastname, student_username, student_password}</div>
     render() {
         const { students, student } = this.state
         return (

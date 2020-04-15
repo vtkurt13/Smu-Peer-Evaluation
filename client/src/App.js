@@ -11,6 +11,7 @@ import ProfessorLogin from './pages/ProfessorLogin';
 import CreateUser from './pages/CreateUser';
 import StudentHome from './pages/StudentHome'
 import ProfessorHome from './pages/ProfessorHome'
+import CreateTeam from './pages/Createteam'
 
 class App extends Component {
   state = {
@@ -59,6 +60,7 @@ render() {
           <Route exact path="/profLogin" component={ProfessorLogin} />
           <Route exact path="/profHome" component={ProfessorHome} />
           <Route exact path="/studHome" component={StudentHome} />
+          <Route exact path="/createteam" component={CreateTeam} />
           <Redirect to="/404" />
         </Switch>
       </Router>

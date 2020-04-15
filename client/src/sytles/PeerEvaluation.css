@@ -1,0 +1,66 @@
+.wrapper{
+    text-align: center;
+    background-color: rgb(25, 56, 114);
+}
+.peerform{
+    display: grid;
+    grid-template-columns: 50% 50%;
+    text-align: center;
+    background-color: rgb(25, 56, 114);
+}
+
+.top {
+    display: grid;
+    grid-template-columns: 40% 15%;
+}
+
+.peval {
+    font-size: 20pt;
+    font-weight: bolder;
+    color:  rgb(126, 108, 75);
+}
+
+.back {
+    text-align: center;
+    color: white;
+    height: 30px;
+    font-size: 15pt;
+    border-top-style: hidden;
+    border-right-style: hidden;
+    border-left-style: hidden;
+    border-bottom-style: hidden;
+    background-color:  rgb(126, 108, 75);
+
+}
+
+.lblstr{
+    color: white;
+}
+
+.score{
+    color: white;
+}
+h1{
+    color: rgb(126, 108, 75);
+}
+
+.header{
+    color: rgb(126, 108, 75);
+}
+
+table {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.sub{
+    height: 30px;
+    text-align: center;
+    font-size: 15pt;
+    border-top-style: hidden;
+    border-right-style: hidden;
+    border-left-style: hidden;
+    border-bottom-style: hidden;
+    background-color: rgb(126, 108, 75);
+}
+

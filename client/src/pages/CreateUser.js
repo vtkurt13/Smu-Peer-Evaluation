@@ -14,6 +14,13 @@ export class CreateUser extends Component {
             password: ''},
         option: 'student'
     }
+
+    handleOptionChange = e => {
+        this.setState({
+            option: e.target.value
+        })
+    }
+
     render() {
         const { students, student } = this.state
         return (
@@ -55,7 +62,7 @@ export class CreateUser extends Component {
                 </div>
                 <div>
                     <input className="create" 
-                    name='password'
+                        name='password'
                         type='password'
                         value= {student.password}
                         onChange= {e => this.setState({ student: {...student, password: e.target.value}})} 
@@ -63,13 +70,17 @@ export class CreateUser extends Component {
                 </div>
                 <div>
                     <h2 className='headers'>Choose type of account</h2>
-                    <input className='radios' type="radio" 
+                    <input className='radios' 
+                        name='option'
+                        type="radio" 
                         value="student" 
                         checked={this.state.option === 'student'}
                         onChange={this.handleOptionChange}></input>
                     <label className='radiolbl' for="stud">Student</label>
                     <br></br>
-                    <input className='radios' type="radio"
+                    <input className='radios' 
+                        name='option'
+                        type="radio"
                         value="professor" 
                         checked={this.state.option === 'professor'}
                         onChange={this.handleOptionChange}

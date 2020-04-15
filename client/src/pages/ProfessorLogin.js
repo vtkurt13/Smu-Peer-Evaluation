@@ -1,19 +1,38 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { Link } from "react-router-dom"
+import '../sytles/logins.css'
 
-const ProfessorLogin = () => {
+export class ProfessorLogin extends Component {
+
+        state = {
+            username: '',
+            password: ''
+        }
+
+    render() {
     return (
         <div>
-            <form className='loginform'>
+            <form className='loginform' action='profLogin' method="POST">
                 <div><img src="SMU-logo.jpg" alt='SMU Logo'></img></div>
 
                 <div>
-                    <input className='username' type='text' placeholder='Username' required ></input>
+                    <input className='username' 
+                        name='username'
+                        type='text' 
+                        placeholder='Username' required 
+                        value={this.state.username}
+                        onChange= {e => this.setState({ username: e.target.value})} />
                 </div>
                 <div>
-                    <input className='password' type='password' placeholder='Password' required ></input>
+                    <input 
+                        className='password' 
+                        name='password'
+                        type='password' 
+                        placeholder='Password' required
+                        value={this.state.password}
+                        onChange= {e => this.setState({ password: e.target.value})} />
                 </div>
-                    <Link to='profHome'><button className='stud-login'>Login</button></Link>
+                    <button type='submit' className='stud-login'>Login</button>
                 <div>
                     <label className='sign-up-quest'>Don't have an account?</label>
                     <Link to='/createAccount'><label className="signup">Sign Up</label></Link>
@@ -21,6 +40,7 @@ const ProfessorLogin = () => {
             </form>
         </div>
     );
-};
+    }
+}
 
 export default ProfessorLogin;

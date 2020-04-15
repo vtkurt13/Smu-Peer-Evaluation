@@ -9,10 +9,6 @@ export class StudentLogin extends Component {
         password: ''
     }
 
-    // handleSubmit = async e => {
-    //     e.preventDefault();
-    //     fetch(`http://localhost:5000/students/add?student_username=${this.state.username}`)
-    // }
     render() {
     return (
         <div>

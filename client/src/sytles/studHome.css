@@ -3,10 +3,21 @@
     text-align: center;
 }
 
+.all {
+    background-color: rgb(25, 56, 114);
+}
+
 .welcome{
     color: white;
     padding-left: 650px;
     font-size: 14pt;
+}
+
+.header{
+    min-height: 50%;
+    padding-bottom: 10px;
+    background-color: rgb(25, 56, 114);
+
 }
 
 .head{
@@ -24,21 +35,39 @@
     background-color: white;
     width: 250px;
     text-align: left;
-    margin-left: 1100px;
     margin-top: -27px;
 }
 
 .lbl{
     color:white;
     font-weight: bold;
-    padding-left: 200px;
 }
 
-.lblfilter{
-    color:white;
+.search{
+    background-color: rgb(175, 156, 71);
+    margin-left: 755px;
+    color: white;
     font-weight: bold;
-    padding-right: 355px;
-    padding-left: 200px;
+    height: 25px;
+    width: 80px;
+    border-top-style: hidden;
+    border-right-style: hidden;
+    border-left-style: hidden;
+    border-bottom-style: hidden;
+}
+
+.studbtn{
+    background-color: rgb(175, 156, 71);
+    color: white;
+    font-weight: bold;
+    height: 45px;
+    border-top-style: hidden;
+    border-right-style: hidden;
+    border-left-style: hidden;
+    border-bottom-style: hidden;
+    border-radius: 8px;
+    margin-left: 30px;
+    margin-top: -10
 }
     
 

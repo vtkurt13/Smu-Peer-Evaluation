@@ -4,6 +4,16 @@
     height: 100%;
 }
 
+.all {
+    background-color: rgb(25, 56, 114);
+}
+
+.header{
+    min-height: 50%;
+    padding-bottom: 10px;
+    background-color: rgb(25, 56, 114);
+
+}
 
 .welcome{
     color: white;

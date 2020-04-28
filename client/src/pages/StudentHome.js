@@ -1,35 +1,101 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { Link } from "react-router-dom"
 import '../sytles/studHome.css'
 
-const StudentHome = () => {
 
-    return (
-        <div>
+import { Nav, Navbar } from 'react-bootstrap'
+import styled from  'styled-components'
+
+const Styles = styled.div`
+
+    .navbar {
+        background-color: rgb(25, 56, 114);
+        border-left: 3px solid black;
+        border-right: 3px solid black;
+        border-bottom: 3px solid black;
+    }
+
+
+    .navbar-brand, .navbar-nav .nav-link {
+        color: white;
+
+        &:hover {
+            color: black;
+        }
+
+    }
+`
+
+export class StudentHome extends Component {
+
+    state = {
+        username: ''
+    }
+
+    componentDidMount() {
+        this.callApi()
+            .then(res => this.setState({username: res.express }))
+            .catch(err => console.log(err))
+    }
+
+    callApi = async () => {
+        const username = await fetch('/studWelcome')
+        const body = await username.json()
+        if (username.status !== 200) throw Error(body.message)
+
+        return body
+    }
+    render() {
+        return (
+            <div className='all'>
+                <Styles>
+                <Navbar>
+                    <Navbar.Brand href="/studHome">Home</Navbar.Brand>
+                    <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                    <Navbar.Collapse id="basic-navbar-nav" >
+                    <Nav className="ml-auto" >
+                        <Nav.Item><Nav.Link href="/peereval">Peer Evaluations</Nav.Link></Nav.Item>
+                        <Nav.Item><Nav.Link href="/viewObjs">View Learning Objectives</Nav.Link></Nav.Item>
+                        <Nav.Item><Nav.Link href="/logOut">Logout</Nav.Link></Nav.Item>
+                    </Nav>
+                </Navbar.Collapse>
+                </Navbar>
+                </Styles>
+                <div className='header'>
+                    <label>{this.state.username}</label>
+                </div>
             <form className='studhome'>
-            {/* <lable className='welcome'>Welcome </lable> */}
-            <div>
-                <h2 className='head'>Student Classes</h2>
-            </div>
-            <div>
-            <span><label className="lbl">Sort by:</label></span>
-            <span><select id="classes" className='dropdown'>
-                <option value="Calculus">Calculus</option>
-                <option value="Micro Economics">Micro Economics</option>
-            </select></span>
-            <span><lable className='lblfilter' for='checks'>Filter By:</lable></span>
-                <fieldset className='checks'>
-                    <input type="checkbox" className="course" value="course" />
-                    <label for="course">Course</label><br></br>
-                    <input type="checkbox" className="member" value="member" />
-                    <label for="member">Members</label><br></br>
-                    <input type="checkbox" className="professor" value="professor" />
-                    <label for="professor">Professor</label><br></br>
-                    <input type="checkbox" className="evals" value="evals" />
-                    <label for="evals">Peer Evals per course</label><br></br>
-                </fieldset>          
-                <button className='search'>Search</button>
-                
+            
+                <div>
+                    <h2 className='head'>Student Classes</h2>
+                </div>
+            <div className='action'>
+                <div>
+                    <label className="lbl" for='dropdown'>Sort by:</label>
+                        <select id="classes" className='dropdown'>
+                            <option value="Calculus">Calculus</option>
+                            <option value="Micro Economics">Micro Economics</option>
+                        </select>
+                </div>
+                <div>
+                    <label className='lblfilter' for='checks'>Filter By:</label>
+                    <fieldset className='checks'>
+                        <input type="checkbox" className="course" value="course" />
+                        <label for="course">Course</label><br></br>
+                        <input type="checkbox" className="member" value="member" />
+                        <label for="member">Members</label><br></br>
+                        <input type="checkbox" className="professor" value="professor" />
+                        <label for="professor">Professor</label><br></br>
+                        <input type="checkbox" className="evals" value="evals" />
+                        <label for="evals">Peer Evals per course</label><br></br>
+                    </fieldset>
+                </div>
+                <div>
+                    
+                </div>
+                <div>          
+                    <button className='search'>Search</button>
+                </div>
             </div>
             <div>
                 <textarea className="class">Gonna get information from database</textarea>
@@ -37,7 +103,8 @@ const StudentHome = () => {
                 <Link to='/peereval'><button className='studbtn'>Peer Evaluation</button></Link>
             </form>
         </div>
-    )
+        )
+    }
 }
 
 export default StudentHome;

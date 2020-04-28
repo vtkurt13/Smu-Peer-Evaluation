@@ -3,10 +3,48 @@ import { Link } from "react-router-dom"
 
 import '../sytles/PeerEvaluation.css'
 
+import { Nav, Navbar } from 'react-bootstrap'
+import styled from  'styled-components'
+
+const Styles = styled.div`
+
+    .navbar {
+        background-color: rgb(25, 56, 114);
+        border-left: 3px solid black;
+        border-right: 3px solid black;
+        border-bottom: 3px solid black;
+    }
+
+
+    .navbar-brand, .navbar-nav .nav-link {
+        color: white;
+
+        &:hover {
+            color: black;
+        }
+
+    }
+`
+
 export class PeerEvaluation extends Component {
+
+
     render() {
         return (
             <div className='wrapper'>
+                 <Styles>
+                <Navbar>
+                    <Navbar.Brand href="/studHome">Home</Navbar.Brand>
+                    <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                    <Navbar.Collapse id="basic-navbar-nav" >
+                    <Nav className="ml-auto" >
+                        <Nav.Item><Nav.Link href="/peereval">Peer Evaluations</Nav.Link></Nav.Item>
+                        <Nav.Item><Nav.Link href="/viewObjs">View Learning Objectives</Nav.Link></Nav.Item>
+                        <Nav.Item><Nav.Link href="/logOut">Logout</Nav.Link></Nav.Item>
+                    </Nav>
+                </Navbar.Collapse>
+                </Navbar>
+                </Styles>
                 <div className='top'>
                     <div><Link to='/studHome'><button className='back'>Back</button></Link></div>
                     <div><label className='peval'>Peer Evaluation Sheet</label></div>
@@ -15,15 +53,15 @@ export class PeerEvaluation extends Component {
                     <div>
                         <label for='student' className='lblstr'>Complete Peer Evaluation for</label>
                         <select id="student" className='dropdown'>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
+                                {/* fill in with group member names */}
+                                <option value="1">Dante Vasiliadis</option>
+                                <option value="2">Jacob Kurstedt</option>
+                                <option value="3">Myles Cobb</option>
+                                <option value="4">Ryan Napper</option>
                             </select>
                     </div>
                 </div>
-                <form className='peerform'>
+                <form className='peerform' action='peereval' method="POST">
                 <div className='contotp'>
                         <label className='header'><strong>Contribution to Team Project</strong></label>
                         
@@ -236,4 +274,3 @@ export class PeerEvaluation extends Component {
 }
 
 export default PeerEvaluation
-

@@ -3,10 +3,10 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const session = require('express-session')
 const cors = require("cors");
-// const connect = require("./config.js");
+// const conne = require("./config.js")
 const mysql = require("mysql");
 
-var conn = mysql.createConnection({
+const conn = mysql.createConnection({
   host: "smu-db.c5j80cautcae.us-east-2.rds.amazonaws.com",
   port: "3306",
   user: "agiledevelopers",
@@ -30,7 +30,6 @@ app.use(session({
 }))
 
 const SELECT_ALL_COURSES_QUERY = "SELECT * FROM courses";
-const SELECT_ALL_STUDENTS_QUERY = 'SELECT * FROM student'
 
 const port = process.env.PORT || 5000;
 
@@ -44,6 +43,8 @@ app.post('/studLogin', (req, res) => {
   if(username && password) {
     conn.query(STUD_LOGIN_QUERY, [username, password], (err, results) => {
       if (results.length > 0){
+        console.log(results[0].student_id)
+        req.session.id = results[0].student_id
         req.session.loggedin = true
         req.session.username = username
         res.redirect('/studHome')
@@ -59,9 +60,22 @@ app.post('/studLogin', (req, res) => {
 }
 })
 
-app.get('/studHome', (req, res) => {
+app.post('/peereval', (req, res) => {
+  const INSERT_PEEREVAL = `INSERT INTO peer_assessment(peer_assessment_id) VALUES('${req.session.id}')`
+  conn.query(INSERT_PEEREVAL, (err, results) => {
+    if(err) {
+        console.log(err)
+        return res.send(err)
+    }
+    else {
+      res.redirect('/')      
+    }
+  })
+})
+
+app.get('/studWelcome', (req, res) => {
   if(req.session.loggedin) {
-    res.send(`<h2>Welcome back ${req.session.username}</h2>`)
+    res.send({express: `Welcome back ${req.session.username}`})
   } else {
     res.send('Please login to view this page!')
   }
@@ -90,9 +104,9 @@ app.post('/profLogin', (req, res) => {
 }
 })
 
-app.get('/profHome', (req, res) => {
+app.get('/profWelcome', (req, res) => {
   if(req.session.loggedin) {
-    res.write(`<h2>Welcome back ${req.session.username}</h2>`)
+    res.send({express: `Welcome back ${req.session.username}`})
   } else {
     res.send('Please login to view this page!')
   }
@@ -106,10 +120,13 @@ app.post('/createAccount', (req, res) => {
   const firstname = req.body.firstname
   const lastname = req.body.lastname
   const rdbtn = req.body.option
-  console.log(rdbtn)
+  const time = new Date()
+  const now = time.toLocaleDateString()
+  console.log(now)
+
   const INSERT_STUDENTS_QUERY = `INSERT INTO student(student_id, student_username, 
-      student_password, student_firstname, student_lastname) 
-          VALUES(${id}, '${username}', '${password}', '${firstname}', '${lastname}')`
+      student_password, student_firstname, student_lastname, student_date_created ) 
+          VALUES(${id}, '${username}', '${password}', '${firstname}', '${lastname}', ${now})`
     const INSERT_PROFESSOR_QUERY = `INSERT INTO professor(professor_id, professor_username, 
       professor_password, professor_firstname, professor_lastname) 
           VALUES(${id}, '${username}', '${password}', '${firstname}', '${lastname}')`
@@ -137,17 +154,37 @@ app.post('/createAccount', (req, res) => {
 })
 
 app.get('/students', (req, res) => {
-  conn.query(SELECT_ALL_STUDENTS_QUERY, (err, results) => {
-      if(err) {
-          return res.send(err)
-      }
-      else {
-          return res.json({
-              data: results
-          })
-      }
+  const SELECT_ALL_STUDENTS = `SELECT * FROM student`
+  conn.query(SELECT_ALL_STUDENTS, (err, results) => {
+    if(err) {
+      console.log(err)
+      return res.send(err)
+    }
+    else {
+      return res.json({
+        data: results
+      })
+    }
   })
 })
+
+app.post('/createteam', (req, res) => {
+  const num = req.body.group_num
+  console.log(num)
+  const INSERT_GROUP = `INSERT INTO group_assignment(group_id) VALUES(${num})`
+
+  conn.query(INSERT_GROUP, (err, results) => {
+    if(err) {
+      console.log(err)
+      res.redirect('/profHome')
+      // return res.send(err)
+  }
+  else {
+    res.redirect('/profHome')
+  }
+  })
+})
+
 
 if (process.env.NODE_ENV === 'production') {
   // Serve any static files
@@ -160,11 +197,3 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 app.listen(port, () => console.log(`Listening on port ${port}`));
-// app.get('/profHome', (req, res) => {
-//   if(req.session.loggedin) {
-//     res.send('Welcome back, ' + req.session.username)
-//   } else {
-//     res.send('Please login to view this page!')
-//   }
-//   res.end()
-// })

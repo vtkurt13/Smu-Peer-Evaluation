@@ -33,6 +33,7 @@ export class ProfessorLogin extends Component {
                         onChange= {e => this.setState({ password: e.target.value})} />
                 </div>
                     <button type='submit' className='stud-login'>Login</button>
+                    <Link to='/'><button className='stud-login'>Back to Home</button></Link>
                 <div>
                     <label className='sign-up-quest'>Don't have an account?</label>
                     <Link to='/createAccount'><label className="signup">Sign Up</label></Link>

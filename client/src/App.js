@@ -17,6 +17,9 @@ import CreateTeam from './pages/Createteam'
 import { Layout } from './sytles/Layout'
 import PeerEvaluation from './pages/PeerEvaluation'
 import Logout from './pages/Logout'
+import Objective from './pages/Objectives'
+import ProfInput from './pages/ProfInput'
+import ViewPeerEval from './pages/ViewPeerEval'
 
 class App extends Component {
 render() {
@@ -35,6 +38,9 @@ render() {
           <Route path="/studHome" component={StudentHome} />
           <Route path="/createTeam" component={CreateTeam} />
           <Route path="/peereval" component={PeerEvaluation} />
+          <Route path="/objective" component={Objective} />
+          <Route path="/profInput" component={ProfInput} />
+          <Route path="/viewevals" component={ViewPeerEval} />
           <Route path="/logOut" component={Logout} />
           <Redirect to="/404" />
         </Switch>

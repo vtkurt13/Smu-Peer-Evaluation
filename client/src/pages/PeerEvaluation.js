@@ -32,14 +32,14 @@ export class PeerEvaluation extends Component {
     render() {
         return (
             <div className='wrapper'>
-                 <Styles>
+                <Styles>
                 <Navbar>
                     <Navbar.Brand href="/studHome">Home</Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav" >
                     <Nav className="ml-auto" >
                         <Nav.Item><Nav.Link href="/peereval">Peer Evaluations</Nav.Link></Nav.Item>
-                        <Nav.Item><Nav.Link href="/viewObjs">View Learning Objectives</Nav.Link></Nav.Item>
+                        <Nav.Item><Nav.Link href="/objective">View Learning Objectives</Nav.Link></Nav.Item>
                         <Nav.Item><Nav.Link href="/logOut">Logout</Nav.Link></Nav.Item>
                     </Nav>
                 </Navbar.Collapse>

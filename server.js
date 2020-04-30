@@ -29,7 +29,6 @@ app.use(session({
   saveUninitialized: true
 }))
 
-const SELECT_ALL_COURSES_QUERY = "SELECT * FROM courses";
 
 const port = process.env.PORT || 5000;
 
@@ -44,7 +43,8 @@ app.post('/studLogin', (req, res) => {
     conn.query(STUD_LOGIN_QUERY, [username, password], (err, results) => {
       if (results.length > 0){
         console.log(results[0].student_id)
-        req.session.id = results[0].student_id
+        req.session.stud_id = results[0].student_id
+        console.log(req.session.stud_id)
         req.session.loggedin = true
         req.session.username = username
         res.redirect('/studHome')
@@ -60,18 +60,174 @@ app.post('/studLogin', (req, res) => {
 }
 })
 
+// app.post('/peereval', (req, res) => {
+//   const evaluatee = req.body.dropdown
+//   console.log(`${evaluatee}`)
+//   const INSERT_PEEREVAL = `INSERT INTO peer_assessment(evaluatee_assignment_id, evaluator_student_id) VALUES(
+//     (SELECT group_assignment_id FROM group_assignment WHERE student_id = (SELECT group_assignment.student_id FROM group_assignment, student WHERE student.student_id = group_assignment.student_id AND student.student_username = '${evaluatee}')),
+//     (SELECT student_id FROM student WHERE student_username = '${req.session.username}'))`
+//   conn.query(INSERT_PEEREVAL, (err, results) => {
+//     if(err) {
+//         console.log(err)
+//         return res.send(err)
+//     }
+//     else {
+//       res.redirect('/')      
+//     }
+//   })
+// })
+
 app.post('/peereval', (req, res) => {
-  const INSERT_PEEREVAL = `INSERT INTO peer_assessment(peer_assessment_id) VALUES('${req.session.id}')`
+  const id = 3
+  const first= req.body.one
+  const two= req.body.two
+  const three= req.body.three
+  const four= req.body.four
+  const five= req.body.five
+  const six= req.body.six
+  const seven= req.body.seven
+  const eight= req.body.eight
+  const nine= req.body.nine
+  const ten= req.body.ten
+  const eleven= req.body.eleven
+  const twelve= req.body.twelve
+  const thirt= req.body.thirteen
+  const fort= req.body.forteen
+  const fift= req.body.fifteen
+  const evaluatee = req.body.dropdown
+
+  const INSERT_PEEREVAL_START = `INSERT INTO peer_assessment(peer_assessment_id, evaluatee_assignment_id, evaluator_student_id) VALUES(${id},
+    (SELECT group_assignment_id FROM group_assignment WHERE student_id = (SELECT group_assignment.student_id FROM group_assignment, student WHERE student.student_id = group_assignment.student_id AND student.student_username = '${evaluatee}')),
+    (SELECT student_id FROM student WHERE student_username = '${req.session.username}'))`
+
+  const INSERT_PEEREVAL = `INSERT INTO peer_assessment_criterion(score, peer_assessment_id, criterion_id) VALUES
+  (
+    ${first},
+    (SELECT peer_assessment_id FROM peer_assessment WHERE peer_assessment_id = (SELECT group_assignment.group_assignment_id FROM group_assignment, student, peer_assessment 
+      WHERE peer_assessment.evaluatee_assignment_id = group_assignment.group_assignment_id AND student.student_id = group_assignment.student_id
+      AND student.student_username = '${evaluatee}')),
+    '1'
+),
+  (
+    ${two},
+    (SELECT peer_assessment_id FROM peer_assessment WHERE peer_assessment_id = (SELECT group_assignment.group_assignment_id FROM group_assignment, student, peer_assessment 
+      WHERE peer_assessment.evaluatee_assignment_id = group_assignment.group_assignment_id AND student.student_id = group_assignment.student_id
+      AND student.student_username = '${evaluatee}')),
+    '2'
+  ),
+  (
+    ${three},
+    (SELECT peer_assessment_id FROM peer_assessment WHERE peer_assessment_id = (SELECT group_assignment.group_assignment_id FROM group_assignment, student, peer_assessment 
+      WHERE peer_assessment.evaluatee_assignment_id = group_assignment.group_assignment_id AND student.student_id = group_assignment.student_id
+      AND student.student_username = '${evaluatee}')),
+    '3'
+  ),
+  (
+    ${four},
+    (SELECT peer_assessment_id FROM peer_assessment WHERE peer_assessment_id = (SELECT group_assignment.group_assignment_id FROM group_assignment, student, peer_assessment 
+      WHERE peer_assessment.evaluatee_assignment_id = group_assignment.group_assignment_id AND student.student_id = group_assignment.student_id
+      AND student.student_username = '${evaluatee}')),
+    '4'
+  ),
+  (
+    ${five},
+    (SELECT peer_assessment_id FROM peer_assessment WHERE peer_assessment_id = (SELECT group_assignment.group_assignment_id FROM group_assignment, student, peer_assessment 
+      WHERE peer_assessment.evaluatee_assignment_id = group_assignment.group_assignment_id AND student.student_id = group_assignment.student_id
+      AND student.student_username = '${evaluatee}')),
+    '5'
+  ),
+  (
+    ${six},
+    (SELECT peer_assessment_id FROM peer_assessment WHERE peer_assessment_id = (SELECT group_assignment.group_assignment_id FROM group_assignment, student, peer_assessment 
+      WHERE peer_assessment.evaluatee_assignment_id = group_assignment.group_assignment_id AND student.student_id = group_assignment.student_id
+      AND student.student_username = '${evaluatee}')),
+    '6'
+  ),
+  (
+    ${seven},
+    (SELECT peer_assessment_id FROM peer_assessment WHERE peer_assessment_id = (SELECT group_assignment.group_assignment_id FROM group_assignment, student, peer_assessment 
+      WHERE peer_assessment.evaluatee_assignment_id = group_assignment.group_assignment_id AND student.student_id = group_assignment.student_id
+      AND student.student_username = '${evaluatee}')),
+   '7'
+  ),
+  (
+    ${eight},
+    (SELECT peer_assessment_id FROM peer_assessment WHERE peer_assessment_id = (SELECT group_assignment.group_assignment_id FROM group_assignment, student, peer_assessment 
+      WHERE peer_assessment.evaluatee_assignment_id = group_assignment.group_assignment_id AND student.student_id = group_assignment.student_id
+      AND student.student_username = '${evaluatee}')),
+    '8'
+  ),
+  (
+    ${nine},
+    (SELECT peer_assessment_id FROM peer_assessment WHERE peer_assessment_id = (SELECT group_assignment.group_assignment_id FROM group_assignment, student, peer_assessment 
+      WHERE peer_assessment.evaluatee_assignment_id = group_assignment.group_assignment_id AND student.student_id = group_assignment.student_id
+      AND student.student_username = '${evaluatee}')),
+    '9'
+  ),
+  (
+    ${ten},
+    (SELECT peer_assessment_id FROM peer_assessment WHERE peer_assessment_id = (SELECT group_assignment.group_assignment_id FROM group_assignment, student, peer_assessment 
+      WHERE peer_assessment.evaluatee_assignment_id = group_assignment.group_assignment_id AND student.student_id = group_assignment.student_id
+      AND student.student_username = '${evaluatee}')),
+    '10'
+  ),
+  (
+    ${eleven},
+    (SELECT peer_assessment_id FROM peer_assessment WHERE peer_assessment_id = (SELECT group_assignment.group_assignment_id FROM group_assignment, student, peer_assessment 
+      WHERE peer_assessment.evaluatee_assignment_id = group_assignment.group_assignment_id AND student.student_id = group_assignment.student_id
+      AND student.student_username = '${evaluatee}')),
+    '11'
+  ),
+  (
+    ${twelve},
+    (SELECT peer_assessment_id FROM peer_assessment WHERE peer_assessment_id = (SELECT group_assignment.group_assignment_id FROM group_assignment, student, peer_assessment 
+      WHERE peer_assessment.evaluatee_assignment_id = group_assignment.group_assignment_id AND student.student_id = group_assignment.student_id
+      AND student.student_username = '${evaluatee}')),
+    '12'
+  ),
+  (
+    ${thirt},
+    (SELECT peer_assessment_id FROM peer_assessment WHERE peer_assessment_id = (SELECT group_assignment.group_assignment_id FROM group_assignment, student, peer_assessment 
+      WHERE peer_assessment.evaluatee_assignment_id = group_assignment.group_assignment_id AND student.student_id = group_assignment.student_id
+      AND student.student_username = '${evaluatee}')),
+    '13'
+  ),
+  (
+    ${fort},
+    (SELECT peer_assessment_id FROM peer_assessment WHERE peer_assessment_id = (SELECT group_assignment.group_assignment_id FROM group_assignment, student, peer_assessment 
+      WHERE peer_assessment.evaluatee_assignment_id = group_assignment.group_assignment_id AND student.student_id = group_assignment.student_id
+      AND student.student_username = '${evaluatee}')),
+    '14'
+  ),
+  (
+    ${fift},
+    (SELECT peer_assessment_id FROM peer_assessment WHERE peer_assessment_id = (SELECT group_assignment.group_assignment_id FROM group_assignment, student, peer_assessment 
+      WHERE peer_assessment.evaluatee_assignment_id = group_assignment.group_assignment_id AND student.student_id = group_assignment.student_id
+      AND student.student_username = '${evaluatee}')),
+    '15'
+  ); `
+  
   conn.query(INSERT_PEEREVAL, (err, results) => {
     if(err) {
         console.log(err)
         return res.send(err)
     }
     else {
-      res.redirect('/')      
+      conn.query(INSERT_PEEREVAL_START, (err, results => {
+        if (err) {
+          console.log(err)
+          return res.send(err)
+        }
+        else {
+          res.redirect('/studHome')
+        }
+      }))     
     }
   })
 })
+
+
+
 
 app.get('/studWelcome', (req, res) => {
   if(req.session.loggedin) {
@@ -168,11 +324,24 @@ app.get('/students', (req, res) => {
   })
 })
 
-app.post('/createteam', (req, res) => {
-  const num = req.body.group_num
-  console.log(num)
-  const INSERT_GROUP = `INSERT INTO group_assignment(group_id) VALUES(${num})`
+app.post('/createTeam', (req, res) => {
 
+  const num = req.body.header
+  console.log(num)
+  const group = req.body.dropdown
+  console.log(group)
+  const id = req.body.studid
+  console.log(`${id}`)
+  const g = 0
+
+  const STUDENT_ID_QUERY = `SELECT student_id FROM student WHERE student_username = `
+
+  const INSERT_GROUP = `INSERT INTO group_assignment(group_id) VALUES('${group[g]}')`
+
+  // for (const g in group) {
+  //     console.log(`${group[g]}`)
+      
+  // }
   conn.query(INSERT_GROUP, (err, results) => {
     if(err) {
       console.log(err)
@@ -181,10 +350,10 @@ app.post('/createteam', (req, res) => {
   }
   else {
     res.redirect('/profHome')
-  }
+  }  
   })
-})
 
+})
 
 if (process.env.NODE_ENV === 'production') {
   // Serve any static files

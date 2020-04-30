@@ -18,9 +18,12 @@
     "express": "^4.17.1",
     "express-session": "^1.17.0",
     "mysql": "^2.18.1",
+    "nodemon": "^2.0.3",
     "react-bootstrap": "^1.0.1",
     "react-router-dom": "^5.1.2",
     "styled-components": "^5.1.0",
+    "tableau-api": "^2.2.3",
+    "tableau-react": "^1.2.2",
     "yarn": "^1.22.4"
   },
   "devDependencies": {

@@ -27,7 +27,14 @@ const Styles = styled.div`
 export class Createteam extends Component {
 
     state = {
-        username: []
+        username: [],
+        group: '7'
+    }
+
+    handleOptionChange = e => {
+        this.setState({
+            group: e.target.value
+        })
     }
 
     componentDidMount() {
@@ -54,8 +61,9 @@ export class Createteam extends Component {
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav" >
                     <Nav className="ml-auto" >
-                        <Nav.Item><Nav.Link href="/createteam">Create Team</Nav.Link></Nav.Item>
+                        <Nav.Item><Nav.Link href="/createTeam">Create Team</Nav.Link></Nav.Item>
                         <Nav.Item><Nav.Link href="/viewevals">View Peer Evalutaions</Nav.Link></Nav.Item>
+                        <Nav.Item><Nav.Link href="/profInput">Search</Nav.Link></Nav.Item>
                         <Nav.Item><Nav.Link href="/logOut">Logout</Nav.Link></Nav.Item>
                     </Nav>
                 </Navbar.Collapse>
@@ -64,26 +72,26 @@ export class Createteam extends Component {
             <form className='createform' action='createTeam' method='POST'>
             <h1 className='head'>Team Selection</h1>
                 <div className='header'>
-                <ul className='stud_list' name='stud_list'>
                     {
                         
                         username.length ?
-                        username.map(user =>  <li key={user.student_id}v className='stud_type' name='stud_type'>{user.student_firstname} {user.student_lastname}
-                            <select  className='dropdown'>
+                        username.map(user =>  <div key={user.student_id} className='stud_type' name={user.student_id} value={user.student_id}> 
+                            <input className='stud_type' name={user.student_id}  value={user.student_firstname, user.student_lastname} readOnly></input>
+                            <select  className='dropdown' name='dropdown' checked={this.state.group === '7'}
+                                onChange={this.handleGroupChange}>
                                 <option className='group_num' name='group_num' value='7'></option>
-                                <option value="1">Group 1</option>
-                                <option value="2">Group 2</option>
-                                <option value="3">Group 3</option>
-                                <option value="4">Group 4</option>
-                                <option value="5">Group 5</option>
-                                <option value="6">Group 6</option>
+                                <option value="10001">Group 1</option>
+                                <option value="10002">Group 2</option>
+                                <option value="10003">Group 3</option>
+                                <option value="10004">Group 4</option>
+                                <option value="10005">Group 5</option>
+                                <option value="10006">Group 6</option>
                              </select>
-                             <div className='studid' name='studid'>{user.student_id}</div>
-                             </li> ): 
+                             <div className='studid' name='studid' value={user.student_id}>{user.student_id}</div>
+                             </div> ): 
                         null
                         
                     }
-                    </ul>
                     <button type='submit'>Create Teams</button>
                 </div>
             </form>

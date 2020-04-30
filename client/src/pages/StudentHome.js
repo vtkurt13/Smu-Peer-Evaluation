@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from "react-router-dom"
 import '../sytles/studHome.css'
+import Tableau from 'tableau-api';  
 
 
 import { Nav, Navbar } from 'react-bootstrap'
@@ -36,6 +37,7 @@ export class StudentHome extends Component {
         this.callApi()
             .then(res => this.setState({username: res.express }))
             .catch(err => console.log(err))
+        this.initTableau()
     }
 
     callApi = async () => {
@@ -45,17 +47,36 @@ export class StudentHome extends Component {
 
         return body
     }
+
+    constructor(props) {
+        super(props)
+      }
+    
+      initTableau() {
+        const vizUrl = "https://prod-useast-a.online.tableau.com/t/virginiatechagiledeveloperssmu/views/AgileDevelopersWorkbook2_0/ProfessorAccountsoverTime?:showAppBanner=false&:origin=viz_share_link&:display_count=n&:showVizHome=n"
+    
+        const options = {
+          hideTabs: true,
+          hideToolbar: true,
+          display: 'none',
+          width: "1000px",
+          height: "905px",
+        }
+    
+        const viz = new window.tableau.Viz(this.container, vizUrl, options)
+      }
+    
     render() {
         return (
             <div className='all'>
-                <Styles>
+                 <Styles>
                 <Navbar>
                     <Navbar.Brand href="/studHome">Home</Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav" >
                     <Nav className="ml-auto" >
                         <Nav.Item><Nav.Link href="/peereval">Peer Evaluations</Nav.Link></Nav.Item>
-                        <Nav.Item><Nav.Link href="/viewObjs">View Learning Objectives</Nav.Link></Nav.Item>
+                        <Nav.Item><Nav.Link href="/objective">View Learning Objectives</Nav.Link></Nav.Item>
                         <Nav.Item><Nav.Link href="/logOut">Logout</Nav.Link></Nav.Item>
                     </Nav>
                 </Navbar.Collapse>
@@ -101,7 +122,16 @@ export class StudentHome extends Component {
                 <textarea className="class">Gonna get information from database</textarea>
             </div>
                 <Link to='/peereval'><button className='studbtn'>Peer Evaluation</button></Link>
+                <div ref={c => (this.container = c)} 
+            style={{
+              position: "absolute",
+              left: 500,
+              top: 450,
+              bottom: 300,
+              backgroundColor: "blue"
+            }} /> 
             </form>
+            
         </div>
         )
     }

@@ -1,0 +1,27 @@
+.studhome {
+    background-color: rgb(25, 56, 114);
+    text-align: center;
+}
+
+.all {
+    background-color: rgb(25, 56, 114);
+    text-align: center;
+}
+
+.header{
+    min-height: 50%;
+    padding-bottom: 10px;
+    background-color: rgb(25, 56, 114);
+
+}
+
+.object {
+    color:white;
+}
+.score {
+    color: white;
+
+}
+p {
+    color:white;
+}

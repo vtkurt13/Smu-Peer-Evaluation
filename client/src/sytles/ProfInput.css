@@ -1,0 +1,32 @@
+
+
+.all {
+    background-color: rgb(25, 56, 114);
+    text-align: center;
+}
+
+.header{
+    min-height: 50%;
+    padding-bottom: 10px;
+    background-color: rgb(25, 56, 114);
+
+}
+
+p {
+    color:white;
+}
+
+.inp {
+    width: 100px;
+    height: 40px;
+    margin-top: 25px;
+    text-align: center;
+    font-size: 15pt;
+    border-top-style: hidden;
+    border-right-style: hidden;
+    border-left-style: hidden;
+    border-bottom-style: hidden;
+    color:white;
+    border-radius: 8px;
+    background-color: rgb(126, 108, 75);
+}

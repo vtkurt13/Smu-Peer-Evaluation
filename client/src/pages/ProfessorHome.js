@@ -4,6 +4,8 @@ import '../sytles/profHome.css'
 
 import React, { Component } from 'react'
 
+import Tableau from 'tableau-api'
+
 import { Nav, Navbar } from 'react-bootstrap'
 import styled from  'styled-components'
 
@@ -33,10 +35,45 @@ export class ProfessorHome extends Component {
         username: ''
     }
 
+    constructor(props) {
+        super(props)
+      }
+    
+      initTableau() {
+        const vizUrl = "https://prod-useast-a.online.tableau.com/t/virginiatechagiledeveloperssmu/views/AgileDevelopersWorkbook2_0/StudentAccountsoverTime?:showAppBanner=false&:display_count=n&:showVizHome=n&:origin=viz_share_link"
+
+        const options = {
+          hideTabs: true,
+          hideToolbar: true,
+          display: 'none',
+          width: "2000px",
+          height: "905px",
+        }
+    
+        const viz = new window.tableau.Viz(this.container, vizUrl, options)
+
+      }
+
+      initChart() {
+          const vizUrl = "https://prod-useast-a.online.tableau.com/t/virginiatechagiledeveloperssmu/views/AgileDevelopersWorkbook2_0/NumberofEvaluationvsNumberofAccounts?:showAppBanner=false&:display_count=n&:showVizHome=n&:origin=viz_share_link"
+          const options = {
+            hideTabs: true,
+            hideToolbar: true,
+            display: 'none',
+            width: "2000px",
+            height: "905px",
+          }
+      
+          const viz = new window.tableau.Viz(this.container, vizUrl, options)
+
+      }
+
     componentDidMount() {
         this.callApi()
             .then(res => this.setState({username: res.express }))
             .catch(err => console.log(err))
+        // this.initTableau()
+        this.initChart()
     }
 
     callApi = async () => {
@@ -59,44 +96,22 @@ export class ProfessorHome extends Component {
                     <Nav className="ml-auto" >
                         <Nav.Item><Nav.Link href="/createTeam">Create Team</Nav.Link></Nav.Item>
                         <Nav.Item><Nav.Link href="/viewevals">View Peer Evalutaions</Nav.Link></Nav.Item>
-                        <Nav.Item><Nav.Link href="/profInput">Search</Nav.Link></Nav.Item>
+                        <Nav.Item><Nav.Link href="/profInput">Feedback</Nav.Link></Nav.Item>
                         <Nav.Item><Nav.Link href="/logOut">Logout</Nav.Link></Nav.Item>
                     </Nav>
                 </Navbar.Collapse>
                 </Navbar>
                 </Styles>
                  <div className='header'>
-                    <label>{this.state.username}</label>
+                    <h2>{this.state.username}</h2>
                 </div>
              <form className='profhome' action='createteam' method='POST'>
-            
-            <div>
-                <h2 className='head'>Professor Classes/Teams</h2>
-            </div>
-            <div>
-            <label className="lbl">Sort by:</label>
-            <select className='dropdown'>
-                <option value="Calculus">Calculus</option>
-                <option value="Micro Economics">Micro Economics</option>
-            </select><span>
-            <span><label className='lblfilter' for='checks'>Filter By:</label></span>
-            <fieldset className='checks'>
-                <input type="checkbox" className="course" value="course" />
-                <label for="course">Course</label><br></br>
-                <input type="checkbox" className="member" value="member" />
-                <label for="member">Members</label><br></br>
-                <input type="checkbox" className="professor" value="professor" />
-                <label for="professor">Peer Evals per Course</label><br></br>
-            </fieldset>
-                </span>
-                <button className='search'>Search</button>
-            </div>
-            <div>
-                <textarea className="class">Information</textarea>
-            </div>
-            <span><button className='profbtn'>View Peer Evaluations</button></span>
-            <Link to='/createteam'><span><button className='profbtn'>Create Team</button></span> </Link>
-
+            <div ref={c => (this.container = c)} 
+            style={{
+              position: "absolute",
+              left: 500,
+              top: 150
+            }} /> 
             </form>
         </div>
         

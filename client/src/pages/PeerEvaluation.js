@@ -45,8 +45,9 @@ export class PeerEvaluation extends Component {
                 </Navbar.Collapse>
                 </Navbar>
                 </Styles>
+
                 <div className='top'>
-                    <div><Link to='/studHome'><button className='back'>Back</button></Link></div>
+                    <div></div>
                     <div><label className='peval'>Peer Evaluation Sheet</label></div>
                     <div>
                     </div>

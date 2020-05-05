@@ -2,6 +2,7 @@
 import React, { Component } from 'react'
 import { Nav, Navbar } from 'react-bootstrap'
 import styled from  'styled-components'
+import '../sytles/createteam.css'
 
 
 const Styles = styled.div`
@@ -63,7 +64,7 @@ export class Createteam extends Component {
                     <Nav className="ml-auto" >
                         <Nav.Item><Nav.Link href="/createTeam">Create Team</Nav.Link></Nav.Item>
                         <Nav.Item><Nav.Link href="/viewevals">View Peer Evalutaions</Nav.Link></Nav.Item>
-                        <Nav.Item><Nav.Link href="/profInput">Search</Nav.Link></Nav.Item>
+                        <Nav.Item><Nav.Link href="/profInput">Feedback</Nav.Link></Nav.Item>
                         <Nav.Item><Nav.Link href="/logOut">Logout</Nav.Link></Nav.Item>
                     </Nav>
                 </Navbar.Collapse>
@@ -75,8 +76,8 @@ export class Createteam extends Component {
                     {
                         
                         username.length ?
-                        username.map(user =>  <div key={user.student_id} className='stud_type' name={user.student_id} value={user.student_id}> 
-                            <input className='stud_type' name={user.student_id}  value={user.student_firstname, user.student_lastname} readOnly></input>
+                        username.map(user =>  <div key={user.student_id} className='stud' name={user.student_id} value={user.student_id}> 
+                            <input className='stud_type' name={user.student_id}  value={user.student_firstname + ' ' + user.student_lastname} readOnly></input>
                             <select  className='dropdown' name='dropdown' checked={this.state.group === '7'}
                                 onChange={this.handleGroupChange}>
                                 <option className='group_num' name='group_num' value='7'></option>

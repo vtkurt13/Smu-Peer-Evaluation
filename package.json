@@ -1,5 +1,5 @@
 {
-  "name": "smu-agiledevs",
+  "name": "smu-peer-evaluations",
   "version": "1.0.0",
   "scripts": {
     "client": "cd client && yarn start",

@@ -53,7 +53,7 @@ export class StudentHome extends Component {
       }
     
       initTableau() {
-        const vizUrl = "https://prod-useast-a.online.tableau.com/t/virginiatechagiledeveloperssmu/views/AgileDevelopersWorkbook2_0/ProfessorAccountsoverTime?:showAppBanner=false&:origin=viz_share_link&:display_count=n&:showVizHome=n"
+        const vizUrl = "https://prod-useast-a.online.tableau.com/t/virginiatechagiledeveloperssmu/views/AgileDevelopersWorkbook2_0/Sheet5?:showAppBanner=false&:display_count=n&:showVizHome=n&:origin=viz_share_link"
     
         const options = {
           hideTabs: true,
@@ -83,52 +83,15 @@ export class StudentHome extends Component {
                 </Navbar>
                 </Styles>
                 <div className='header'>
-                    <label>{this.state.username}</label>
+                    <h2>{this.state.username}</h2>
                 </div>
             <form className='studhome'>
-            
-                <div>
-                    <h2 className='head'>Student Classes</h2>
-                </div>
-            <div className='action'>
-                <div>
-                    <label className="lbl" for='dropdown'>Sort by:</label>
-                        <select id="classes" className='dropdown'>
-                            <option value="Calculus">Calculus</option>
-                            <option value="Micro Economics">Micro Economics</option>
-                        </select>
-                </div>
-                <div>
-                    <label className='lblfilter' for='checks'>Filter By:</label>
-                    <fieldset className='checks'>
-                        <input type="checkbox" className="course" value="course" />
-                        <label for="course">Course</label><br></br>
-                        <input type="checkbox" className="member" value="member" />
-                        <label for="member">Members</label><br></br>
-                        <input type="checkbox" className="professor" value="professor" />
-                        <label for="professor">Professor</label><br></br>
-                        <input type="checkbox" className="evals" value="evals" />
-                        <label for="evals">Peer Evals per course</label><br></br>
-                    </fieldset>
-                </div>
-                <div>
-                    
-                </div>
-                <div>          
-                    <button className='search'>Search</button>
-                </div>
-            </div>
-            <div>
-                <textarea className="class">Gonna get information from database</textarea>
-            </div>
-                <Link to='/peereval'><button className='studbtn'>Peer Evaluation</button></Link>
+        
                 <div ref={c => (this.container = c)} 
             style={{
               position: "absolute",
               left: 500,
-              top: 450,
-              bottom: 300,
-              backgroundColor: "blue"
+              top: 150
             }} /> 
             </form>
             

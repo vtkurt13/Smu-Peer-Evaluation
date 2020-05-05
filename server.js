@@ -60,22 +60,22 @@ app.post('/studLogin', (req, res) => {
 }
 })
 
-// app.post('/peereval', (req, res) => {
-//   const evaluatee = req.body.dropdown
-//   console.log(`${evaluatee}`)
-//   const INSERT_PEEREVAL = `INSERT INTO peer_assessment(evaluatee_assignment_id, evaluator_student_id) VALUES(
-//     (SELECT group_assignment_id FROM group_assignment WHERE student_id = (SELECT group_assignment.student_id FROM group_assignment, student WHERE student.student_id = group_assignment.student_id AND student.student_username = '${evaluatee}')),
-//     (SELECT student_id FROM student WHERE student_username = '${req.session.username}'))`
-//   conn.query(INSERT_PEEREVAL, (err, results) => {
-//     if(err) {
-//         console.log(err)
-//         return res.send(err)
-//     }
-//     else {
-//       res.redirect('/')      
-//     }
-//   })
-// })
+app.post('/peereval', (req, res) => {
+  const evaluatee = req.body.dropdown
+  const id = 11
+  const INSERT_PEEREVAL = `INSERT INTO peer_assessment(peer_assessment_id, evaluatee_assignment_id, evaluator_student_id) VALUES(${id},
+    (SELECT group_assignment_id FROM group_assignment WHERE student_id = (SELECT group_assignment.student_id FROM group_assignment, student WHERE student.student_id = group_assignment.student_id AND student.student_username = '${evaluatee}')),
+    (SELECT student_id FROM student WHERE student_username = '${req.session.username}'))`
+  conn.query(INSERT_PEEREVAL, (err, results) => {
+    if(err) {
+        console.log(err)
+        return res.send(err)
+    }
+    else {
+      res.redirect('/studHome')      
+    }
+  })
+})
 
 app.post('/peereval', (req, res) => {
   const id = 3
@@ -226,9 +226,6 @@ app.post('/peereval', (req, res) => {
   })
 })
 
-
-
-
 app.get('/studWelcome', (req, res) => {
   if(req.session.loggedin) {
     res.send({express: `Welcome back ${req.session.username}`})
@@ -269,6 +266,19 @@ app.get('/profWelcome', (req, res) => {
   res.end()
 })
 
+app.get('/scores', (req, res) => {
+  const PEER_SCORES = `SELECT score FROM peer_assessment_criterion WHERE peer_assessment_id = 2001`
+  conn.query(PEER_SCORES, (err, results) => {
+    if (err) {
+      console.log(err)
+      res.send(err)
+    }
+    else {
+      res.send({express: results})
+    }
+  })
+
+})
 app.post('/createAccount', (req, res) => {
   const id = req.body.id
   const username = req.body.username
@@ -329,19 +339,15 @@ app.post('/createTeam', (req, res) => {
   const num = req.body.header
   console.log(num)
   const group = req.body.dropdown
-  console.log(group)
   const id = req.body.studid
   console.log(`${id}`)
   const g = 0
+  const uname = 'Dante1'
 
-  const STUDENT_ID_QUERY = `SELECT student_id FROM student WHERE student_username = `
+  const INSERT_GROUP = `INSERT INTO group_assignment(group_id, student_id, course_id) VALUES('${group[g]}, 
+  (SELECT student_id FROM student WHERE student_username = '${uname}'), 
+  (SELECT courses.course_id from courses, professor WHERE professor.professor_username = ${req.session.username}))`
 
-  const INSERT_GROUP = `INSERT INTO group_assignment(group_id) VALUES('${group[g]}')`
-
-  // for (const g in group) {
-  //     console.log(`${group[g]}`)
-      
-  // }
   conn.query(INSERT_GROUP, (err, results) => {
     if(err) {
       console.log(err)

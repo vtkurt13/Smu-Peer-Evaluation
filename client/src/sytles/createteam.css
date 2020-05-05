@@ -9,3 +9,19 @@
     text-align: center;
     background-color: rgb(25, 56, 114);
 }
+
+.stud_type {
+    text-align: center;
+    background-color: rgb(25, 56, 114);
+    border-top-style: hidden;
+    border-right-style: hidden;
+    border-left-style: hidden;
+    border-bottom-style: hidden;
+    color: white;
+
+}
+
+.studid {
+    color: white;
+}
+
